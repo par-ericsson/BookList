@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using BookList.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace BookList.Data
+namespace BookList.DataAccess.Data
 {
     public class ApplicationDbContext : IdentityDbContext
     {
@@ -12,5 +13,7 @@ namespace BookList.Data
             : base(options)
         {
         }
+
+        public DbSet<Category> Categories { get; set; }
     }
 }
