@@ -4,14 +4,16 @@ using BookList.DataAccess.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BookList.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201114190012_AddCompanyToDb")]
+    partial class AddCompanyToDb
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -350,14 +352,9 @@ namespace BookList.DataAccess.Migrations
                     b.Property<string>("City")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("CompanyId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.HasIndex("CompanyId");
 
                     b.HasDiscriminator().HasValue("ApplicationUser");
                 });
@@ -426,13 +423,6 @@ namespace BookList.DataAccess.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("BookList.Models.ApplicationUser", b =>
-                {
-                    b.HasOne("BookList.Models.Company", "Company")
-                        .WithMany()
-                        .HasForeignKey("CompanyId");
                 });
 #pragma warning restore 612, 618
         }
