@@ -4,12 +4,15 @@ using System.Linq;
 using System.Threading.Tasks;
 using BookList.DataAccess.Data;
 using BookList.Models;
+using BookList.Utility;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace BookList.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = StaticDetail.Role_Admin + "," + StaticDetail.Role_Employee)]
     public class UserController : Controller
     {
         private readonly ApplicationDbContext _context;

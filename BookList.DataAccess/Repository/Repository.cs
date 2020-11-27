@@ -17,7 +17,7 @@ namespace BookList.DataAccess.Repository
         public Repository(ApplicationDbContext context)
         {
             _context = context;
-            this.dbSet = _context.Set<T>();
+            dbSet = _context.Set<T>();
         }
         public void Add(T entity)
         {
