@@ -1,10 +1,11 @@
 ﻿using BookList.DataAccess.Data;
+using BookList.DataAccess.Repository.IRepository;
 using BookList.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace BookList.DataAccess.Repository.IRepository
+namespace BookList.DataAccess.Repository
 {
     public class CompanyRepository : Repository<Company>, ICompanyRepository
     {

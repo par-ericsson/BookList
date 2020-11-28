@@ -20,6 +20,9 @@ namespace BookList.DataAccess.Repository
             Product = new ProductRepository(_context);
             ApplicationUser = new ApplicationUserRepository(_context);
             SP_Call = new SP_Call(_context);
+            OrderDetails = new OrderDetailsRepository(_context);
+            OrderHeader = new OrderHeaderRepository(_context);
+            ShoppingCart = new ShoppingCartRepository(_context);
         }
 
         public ICategoryRepository Category { get; private set; }
@@ -28,6 +31,9 @@ namespace BookList.DataAccess.Repository
         public IProductRepository Product { get; set; }
         public IApplicationUserRepository ApplicationUser { get; private set; }
         public ISP_Call SP_Call { get; private set; }
+        public IShoppingCartRepository ShoppingCart { get; private set; }
+        public IOrderDetailsRepository OrderDetails { get; private set; }
+        public IOrderHeaderRepository OrderHeader { get; private set; }
 
         public void Dispose()
         {
