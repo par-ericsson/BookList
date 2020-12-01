@@ -11,6 +11,7 @@ using BookList.DataAccess.Repository.IRepository;
 using BookList.DataAccess.Repository;
 using BookList.Utility;
 using Microsoft.AspNetCore.Identity.UI.Services;
+using System;
 
 namespace BookList
 {
@@ -41,6 +42,12 @@ namespace BookList
                 options.LogoutPath = $"/Identity/Account/Logout";
                 options.AccessDeniedPath = $"/Identity/Account/AccessDenied";
             });
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(30);
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -61,7 +68,7 @@ namespace BookList
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            app.UseSession();
             app.UseAuthentication();
             app.UseAuthorization();
 
